@@ -54,7 +54,7 @@ def evaluate(image_path='./imgs/116.jpg', cp='cp/79999_iter.pth'):
 
     n_classes = 19
     net = BiSeNet(n_classes=n_classes)
-    net.cuda()
+    # net.cuda()
     net.load_state_dict(torch.load(cp))
     net.eval()
 
@@ -68,7 +68,7 @@ def evaluate(image_path='./imgs/116.jpg', cp='cp/79999_iter.pth'):
         image = img.resize((512, 512), Image.BILINEAR)
         img = to_tensor(image)
         img = torch.unsqueeze(img, 0)
-        img = img.cuda()
+        # img = img.cuda()
         out = net(img)[0]
         parsing = out.squeeze(0).cpu().numpy().argmax(0)
         # print(parsing)

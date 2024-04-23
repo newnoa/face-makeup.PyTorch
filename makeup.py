@@ -4,11 +4,13 @@ import numpy as np
 from skimage.filters import gaussian
 from test import evaluate
 import argparse
+import ast
 
 
 def parse_args():
     parse = argparse.ArgumentParser()
     parse.add_argument('--img-path', default='imgs/116.jpg')
+    parse.add_argument('--colors', default='[[230, 50, 20], [20, 70, 180], [20, 70, 180]]')
     return parse.parse_args()
 
 
@@ -80,7 +82,7 @@ if __name__ == '__main__':
 
     parts = [table['hair'], table['upper_lip'], table['lower_lip']]
 
-    colors = [[230, 50, 20], [20, 70, 180], [20, 70, 180]]
+    colors = ast.literal_eval(args.colors)
 
     for part, color in zip(parts, colors):
         image = hair(image, parsing, part, color)

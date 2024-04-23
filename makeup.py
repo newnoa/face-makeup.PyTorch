@@ -83,7 +83,7 @@ if __name__ == '__main__':
     }
 
     image_path = args.img_path
-    cp = 'cp/79999_iter.pth'
+    cp = '/opt/face-makeup.PyTorch/cp/79999_iter.pth'
 
     image = cv2.imread(image_path)
     ori = image.copy()
@@ -101,8 +101,8 @@ if __name__ == '__main__':
     # imageFile = Image.fromarray(np.uint8(cv2.resize(image, (512, 512))))
     # imageFile.save("D:/face-makeup.PyTorch/1.jpg")
     cv2.imwrite(args.save_path, image)
-    # cv2.imshow('image', cv2.resize(ori, (512, 512)))
-    # cv2.imshow('color', cv2.resize(image, (512, 512)))
+    cv2.imshow('image', cv2.resize(ori, (512, 512)))
+    cv2.imshow('color', cv2.resize(image, (512, 512)))
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()

@@ -5,12 +5,13 @@ from skimage.filters import gaussian
 from test import evaluate
 import argparse
 import ast
-
+from PIL import Image
 
 def parse_args():
     parse = argparse.ArgumentParser()
     parse.add_argument('--img-path', default='imgs/116.jpg')
-    parse.add_argument('--colors', default='[[230, 50, 20], [20, 70, 180], [20, 70, 180]]')
+    parse.add_argument('--colors', default='[[230, 50, 20], [120, 70, 180], [20, 70, 180]]')
+    parse.add_argument('--save-path', default='imgs/116t.jpg')
     return parse.parse_args()
 
 
@@ -87,8 +88,12 @@ if __name__ == '__main__':
     for part, color in zip(parts, colors):
         image = hair(image, parsing, part, color)
 
-    cv2.imshow('image', cv2.resize(ori, (512, 512)))
-    cv2.imshow('color', cv2.resize(image, (512, 512)))
+    # print(image.dtype)
+    # imageFile = Image.fromarray(np.uint8(cv2.resize(image, (512, 512))))
+    # imageFile.save("D:/face-makeup.PyTorch/1.jpg")
+    cv2.imwrite(args.save_path, image)
+    # cv2.imshow('image', cv2.resize(ori, (512, 512)))
+    # cv2.imshow('color', cv2.resize(image, (512, 512)))
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()

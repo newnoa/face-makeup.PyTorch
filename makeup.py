@@ -3,6 +3,7 @@ import os
 import numpy as np
 from skimage.filters import gaussian
 from test import evaluate
+import torch
 import argparse
 import ast
 from PIL import Image
@@ -64,7 +65,7 @@ if __name__ == '__main__':
     # 12 upper lip
     # 13 lower lip
     # 17 hair
-    
+
     if torch.cuda.is_available():
         device = torch.device("cuda")
         print('There are %d GPU(s) available.' % torch.cuda.device_count())
